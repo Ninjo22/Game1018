@@ -43,11 +43,10 @@ public class TiledLevelScript : MonoBehaviour
             yield break;
         }
 
-        yield return StartCoroutine(LoadTextFile("Level1.txt", result => levelText = result));
-
+        yield return StartCoroutine(LoadTextFile(LevelSettings.SelectedLevel, result => levelText = result));
         if (string.IsNullOrEmpty(levelText))
         {
-            Debug.LogError("Level1.txt could not be loaded.");
+            Debug.LogError("Level could not be loaded.");
             yield break;
         }
 

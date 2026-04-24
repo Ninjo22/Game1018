@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
         yield return StartCoroutine(LoadPlayerConfigOrDefaultOnes());
 
         // Activate correct sprite + animator.
-        SetActiveSprite(ActiveSprite);
+        SetActiveSprite(4);
 
         // Always start in air.
         isGrounded = false;
@@ -98,6 +98,10 @@ public class PlayerScript : MonoBehaviour
             SetActiveSprite(1);
         else if (Input.GetKey(KeyCode.Alpha3))
             SetActiveSprite(2);
+        else if (Input.GetKey(KeyCode.Alpha4))
+            SetActiveSprite(3);
+        else if (Input.GetKey(KeyCode.Alpha5))
+            SetActiveSprite(4);
     }
 
     private void GroundedCheck()
