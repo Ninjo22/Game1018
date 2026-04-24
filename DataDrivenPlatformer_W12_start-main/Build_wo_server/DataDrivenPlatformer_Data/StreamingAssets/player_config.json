@@ -1,0 +1,10 @@
+{
+  "PlayerSprite": 1,
+  "JumpMultiplier": 2,
+  "SpeedMultiplier": 1,
+
+  "_PlayerSprite_Note_": "This should be 1, 2 or 3",
+  "_Multipliers_Note_": "These should be greater than 0. 1 = normal"
+}
+
+
