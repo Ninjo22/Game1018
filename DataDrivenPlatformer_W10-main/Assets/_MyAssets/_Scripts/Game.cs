@@ -13,6 +13,7 @@ public class Game : MonoBehaviour
     [SerializeField] float maxTime = 90f;
     public int Score { get; private set; }
     private float startTime;
+    private float elapsedTime;
     private int tries;
     public static Game Instance { get; private set; } // Static object of the class.
     public SoundManager SOMA;
@@ -47,6 +48,7 @@ public class Game : MonoBehaviour
         Score = 0;
         tries = 0;
         startTime = Time.time;
+        elapsedTime = 0f;
         StartCoroutine("UpdateTimer");
     }
 
@@ -54,7 +56,7 @@ public class Game : MonoBehaviour
     {
         while (true)
         {
-            float elapsedTime = Time.time - startTime;
+            elapsedTime = Time.time - startTime;
             float displayedTime = maxTime - elapsedTime;
             if (displayedTime < 0f) { displayedTime = 0f; }
             timerText.text = "Time: " + displayedTime.ToString("F2") + "s";
@@ -107,5 +109,6 @@ public class Game : MonoBehaviour
         GameObject cam = GameObject.Find("Main Camera");
         cam.GetComponent<CameraFollow>().enabled = false;
         cam.transform.GetChild(0).gameObject.SetActive(false);
+        LeaderboardManager.Instance.SubmitCurrentScore(Score, elapsedTime, tries);
     }
 }
