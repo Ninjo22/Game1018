@@ -29,7 +29,19 @@ public class RespawnScript : MonoBehaviour
         if (other.gameObject.tag == "Checkpoint")
         {
             Game.Instance.SOMA.PlaySound("Checkpoint");
-            respawnPosition = other.transform.position; // Checkpoint's position.
+            respawnPosition = other.transform.position;
+
+            // Search the parent and its children for the SpriteRenderer
+            SpriteRenderer sr = other.GetComponentInChildren<SpriteRenderer>();
+
+            if (sr != null)
+            {
+                sr.color = Color.green;
+            }
+            else
+            {
+                Debug.LogWarning("SpriteRenderer not found on " + other.gameObject.name + " or its children!");
+            }
         }
         if (other.gameObject.tag == "Finish")
         {
