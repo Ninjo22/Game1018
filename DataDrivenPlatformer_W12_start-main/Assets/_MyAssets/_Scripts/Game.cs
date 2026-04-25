@@ -16,7 +16,7 @@ public class Game : MonoBehaviour
     public int Score { get; private set; }
     private float startTime;
     private float elapsedTime;
-    private int tries;
+    public int tries;
     public static Game Instance { get; private set; } // Static object of the class.
     public SoundManager SOMA;
 
