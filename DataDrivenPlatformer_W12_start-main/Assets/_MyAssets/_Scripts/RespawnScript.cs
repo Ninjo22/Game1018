@@ -31,16 +31,20 @@ public class RespawnScript : MonoBehaviour
             Game.Instance.SOMA.PlaySound("Checkpoint");
             respawnPosition = other.transform.position;
 
-            // Search the parent and its children for the SpriteRenderer
-            SpriteRenderer sr = other.GetComponentInChildren<SpriteRenderer>();
+            // Specifically find the child named "Checkpoint (2)"
+            Transform flagTransform = other.transform.Find("Checkpoint (2)");
 
-            if (sr != null)
+            if (flagTransform != null)
             {
-                sr.color = Color.green;
+                SpriteRenderer sr = flagTransform.GetComponent<SpriteRenderer>();
+                if (sr != null)
+                {
+                    sr.color = Color.green;
+                }
             }
             else
             {
-                Debug.LogWarning("SpriteRenderer not found on " + other.gameObject.name + " or its children!");
+                Debug.LogWarning("Could not find a child named 'Checkpoint (2)' under " + other.gameObject.name);
             }
         }
         if (other.gameObject.tag == "Finish")
